@@ -2,6 +2,9 @@ import React from "react";
 import Grid from "../grid/Grid";
 import * as styled from "./styles";
 
+import firebase from 'firebase/compat/app'
+import { auth, db } from '../../config/firebase'
+
 const Form = ({handleAdd, transactionsList, setTransactionsList}) => {
   const [desc, setDesc] = React.useState("");
   const [amount, setAmount] = React.useState("");
@@ -23,13 +26,13 @@ const Form = ({handleAdd, transactionsList, setTransactionsList}) => {
       desc: desc,
       amount: amount,
       expense: isExpense,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
     }
 
     handleAdd(transaction)
 
     setDesc("")
     setAmount("")
-
   };
 
   return (
@@ -74,6 +77,7 @@ const Form = ({handleAdd, transactionsList, setTransactionsList}) => {
         </styled.RadioGroup>
 
         <styled.Button onClick={handleSave}>ADICIONAR</styled.Button>
+
       </styled.Container>
 
       <Grid itens={transactionsList} setItens={setTransactionsList} />
