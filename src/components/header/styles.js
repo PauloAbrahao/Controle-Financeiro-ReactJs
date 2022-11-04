@@ -11,6 +11,7 @@ export const Title = styled.div`
   padding-top: 20px;
   color: #fff;
   align-items: center;
+  font-weight: 400;
 
   display: flex;
   justify-content: space-between;
@@ -20,11 +21,12 @@ export const Title = styled.div`
 export const Button = styled.button`
   padding: 5px 20px;
   font-size: 20px;
-  font-weight: 600;
+  font-weight: 400;
   cursor: pointer;
   background-color: teal;
   color: #fff;
   border-radius: 10px;
-  border-color: #fff;
+  border: 1.5px solid #fff;
+  border-color: #ffffff;
   margin-right: 120px;
 `

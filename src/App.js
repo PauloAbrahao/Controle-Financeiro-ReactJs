@@ -12,14 +12,13 @@ function App() {
   const [user] = useAuthState(auth);
 
   const [transactionsList, setTransactionsList] = React.useState();
-
   const [income, setIncome] = React.useState(0);
   const [expense, setExpense] = React.useState(0);
   const [total, setTotal] = React.useState(0);
 
   React.useEffect(() => {
     db.collection("transactions")
-      .orderBy("createdAt")
+      .orderBy("transDate", "desc")
       .onSnapshot((snapshot) => {
         setTransactionsList(snapshot.docs.map((doc) => doc.data()));
       });

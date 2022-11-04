@@ -27,6 +27,7 @@ export const Label = styled.label``;
 export const Input = styled.input`
   outline: none;
   border-radius: 5px;
+  margin-top: 5px;
   padding: 5px 10px;
   font-size: 15px;
   border: 1px solid #ccc;
@@ -45,10 +46,11 @@ export const RadioGroup = styled.div`
 `;
 
 export const Button = styled.button`
-  padding: 5px 10px;
+  padding: 1px 10px;
+  font-size: 1.2rem;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  color: white;
+  color: #ffffff;
   background-color: teal;
 `;

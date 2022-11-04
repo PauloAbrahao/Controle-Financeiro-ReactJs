@@ -16,19 +16,28 @@ const Login = () => {
         justifyContent: "center",
         height: "90vh",
         alignItems: "center",
+        flexDirection: "column",
       }}
     >
+      <h1 style={{
+        fontFamily: "Arial",
+        fontSize: "3rem",
+        marginTop: '-5rem'
+      }}>
+        Controle Financeiro
+      </h1>
+
       <button
         style={{
           padding: "30px",
           fontSize: "20px",
-          borderRadius: "0",
           fontWeight: "600",
           cursor: "pointer",
           backgroundColor: 'teal',
           color: '#fff',
           borderRadius: '10px',
           borderColor: 'transparent',
+          marginTop: '5rem'
         }}
         onClick={signInWithGoogle}
       >

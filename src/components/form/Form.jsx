@@ -3,12 +3,11 @@ import Grid from "../grid/Grid";
 import * as styled from "./styles";
 
 import firebase from 'firebase/compat/app'
-import { auth, db } from '../../config/firebase'
-
 const Form = ({handleAdd, transactionsList, setTransactionsList}) => {
   const [desc, setDesc] = React.useState("");
   const [amount, setAmount] = React.useState("");
   const [isExpense, setExpense] = React.useState(false);
+  const [transDate, setTransDate] = React.useState();
 
   const generateId = () => Math.round(Math.random() * 1000)
 
@@ -26,7 +25,8 @@ const Form = ({handleAdd, transactionsList, setTransactionsList}) => {
       desc: desc,
       amount: amount,
       expense: isExpense,
-      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      transDate: transDate
     }
 
     handleAdd(transaction)
@@ -55,6 +55,15 @@ const Form = ({handleAdd, transactionsList, setTransactionsList}) => {
           />
         </styled.InputContent>
 
+        <styled.InputContent>
+          <styled.Label>Data</styled.Label>
+          <styled.Input
+            value={transDate}
+            type="date"
+            onChange={(e) => setTransDate(e.target.value)}
+          />
+        </styled.InputContent>
+
         <styled.RadioGroup>
           <styled.Input
             type="radio"
@@ -76,7 +85,7 @@ const Form = ({handleAdd, transactionsList, setTransactionsList}) => {
           <styled.Label htmlFor="rExpenses">Saída</styled.Label>
         </styled.RadioGroup>
 
-        <styled.Button onClick={handleSave}>ADICIONAR</styled.Button>
+        <styled.Button onClick={handleSave}>Adicionar</styled.Button>
 
       </styled.Container>
 
