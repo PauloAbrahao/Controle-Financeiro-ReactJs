@@ -19,10 +19,6 @@ const Grid = ({ itens }) => {
     });
   };
 
-  const onEdit = () => {
-    console.log("edit");
-  }
-
   return (
     <>
       <styled.Table>
@@ -44,7 +40,6 @@ const Grid = ({ itens }) => {
               key={index}
               item={item}
               onDelete={onDelete}
-              onEdit={onEdit}
             />
           ))}
         </styled.Tbody>

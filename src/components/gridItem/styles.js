@@ -14,12 +14,12 @@ export const Td = styled.td`
 `;
 
 export const Type = styled.div`
-  // background-color: red;
   width: 80%;
   display: flex;
   flex-direction: row;
   left: 0;
+  align-items: center;
 `
 export const p = styled.p`
-  padding: 0 5px;
+  padding: 0px 5px;
 `

@@ -5,8 +5,8 @@ export const Container = styled.div`
   margin: 20px auto;
   width: 98%;
   background-color: #fff;
-  box-shadow: 0px 0px 5px #ccc;
-  border-radius: 5px;
+  box-shadow: 1px 1px 5px #ccc;
+  border-radius: 12px;
   display: flex;
   justify-content: space-around;
   padding: 15px 0px;
@@ -22,7 +22,9 @@ export const InputContent = styled.div`
   flex-direction: column;
 `;
 
-export const Label = styled.label``;
+export const Label = styled.label`
+  font-weight: 500;
+`;
 
 export const Input = styled.input`
   outline: none;
@@ -52,5 +54,5 @@ export const Button = styled.button`
   border-radius: 5px;
   cursor: pointer;
   color: #ffffff;
-  background-color: teal;
+  background-color: #6F6AF8;
 `;

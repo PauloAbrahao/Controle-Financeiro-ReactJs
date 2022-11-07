@@ -5,10 +5,12 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: #fff;
-  border-radius: 5px;
   padding: 5px 15px;
   padding-bottom: 15px;
   width: 30%;
+
+  border-radius: 15px;
+  background: #f2f2f2;
 
   @media (max-width: 750px) {
     width: 20%;
@@ -42,10 +44,12 @@ export const Header = styled.header`
 `;
 
 export const HeaderTitle = styled.p`
-  font-size: 20px;
+  font-size: 1.5rem;
+  font-weight: 500;
 `;
 
 export const Total = styled.span`
   font-size: 30px;
   font-weight: bold;
+  color: #451381;
 `;
