@@ -157,7 +157,7 @@ const FormDialog = (props) => {
               <styled.AdicionarBtn
                 onClick={() => onEdit(props.id)}
               >
-                Editar
+                Salvar
               </styled.AdicionarBtn>
 
               <styled.DeletarBtn

@@ -37,7 +37,10 @@ const GridItem = ({item}) => {
               color: "#F7F7F7",
               width: "130px",
               fontWeight: "400",
+              cursor: "pointer",
             }}
+
+            onClick={() => setOpen(true)}
           >
             {item.desc}
           </div>

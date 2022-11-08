@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Background = styled.div`
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.7);
   width: 100vw;
   height: 100vh;
   z-index: 0;
@@ -97,10 +97,12 @@ export const ActionsContainer = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
+  margin: 0 50px;
 `;
 
 export const AdicionarBtn = styled.button`
   margin-top: 10px;
+  width: 150px;
   cursor: pointer;
   font-weight: 500;
   padding: 11px 28px;
@@ -114,6 +116,7 @@ export const AdicionarBtn = styled.button`
 
 export const DeletarBtn = styled.button`
   margin-top: 10px;
+  width: 150px;
   cursor: pointer;
   font-weight: 500;
   padding: 11px 28px;
