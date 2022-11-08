@@ -2,9 +2,79 @@ import React from "react";
 
 import * as styled from "./styles.js";
 
+import { deleteDoc, updateDoc, getDocs, collection } from "firebase/firestore";
+import { db } from "../../config/firebase";
+
 import { RiCloseLine } from "react-icons/ri";
 
 const FormDialog = (props) => {
+
+  const [editValues, setEditValues] = React.useState({
+    desc: props.desc,
+    amount: props.amount,
+    transDate: props.transDate,
+    income: props.income,
+    expense: props.expense,
+  })
+
+  const onDelete = async (ID) => {
+    const colRef = collection(db, "transactions");
+    const docsSnap = await getDocs(colRef);
+
+    docsSnap.forEach((doc) => {
+      if (doc.data().id === ID) {
+        console.log(doc.ref);
+        deleteDoc(doc.ref);
+      }
+    });
+
+    props.setOpen(false)
+  };
+
+  const onEdit = async (ID) => {
+    const colRef = collection(db, "transactions");
+    const docsSnap = await getDocs(colRef);
+
+    docsSnap.forEach((doc) => {
+      if (doc.data().id === ID) {
+
+        updateDoc(doc.ref, {
+          desc: editValues.desc ? editValues.desc : null,
+          amount: editValues.amount ? editValues.amount : null,
+          transDate: editValues.transDate ? editValues.transDate : null,
+          income: editValues.income ? editValues.income : false,
+          expense: editValues.expense ? editValues.expense : false,
+        });
+      }
+    })
+
+    props.setOpen(false)
+  }
+
+  const handleChangeValues = (values) => {
+    setEditValues((prevValues) => ({
+      ...prevValues,
+      [values.target.id]: values.target.value,
+    }));
+
+    console.log(values.target.value);
+
+    //change the radion button state when the user change the value
+    if (values.target.id === "income") { 
+      setEditValues((prevValues) => ({
+        ...prevValues,
+        income: true,
+        expense: false,
+      }));
+    } else if (values.target.id === "expense") { 
+      setEditValues((prevValues) => ({
+        ...prevValues,
+        income: false,
+        expense: true,
+      }));
+    } 
+  }
+
   return (
     <>
       <styled.Background  onClick={() => props.setOpen(false)} />
@@ -16,23 +86,25 @@ const FormDialog = (props) => {
 
           <styled.ModalContent>
             <styled.ChangeValues>
-              <styled.Label htmlFor="name">Descrição</styled.Label>
+              <styled.Label htmlFor="desc">Descrição</styled.Label>
               <styled.Input
                 margin="dense"
-                id="name"
-                label="name"
+                id="desc"
+                label="desc"
                 defaultValue={props.desc}
                 type="text"
+                onChange={handleChangeValues}
               />
             </styled.ChangeValues>
 
             <styled.ChangeValues>
-              <styled.Label htmlFor="valor">Valor</styled.Label>
+              <styled.Label htmlFor="amount">Valor</styled.Label>
               <styled.Input
                 margin="dense"
-                id="valor"
-                label="valor"
+                id="amount"
+                label="amount"
                 defaultValue={props.amount}
+                onChange={handleChangeValues}
                 type="number"
               />
             </styled.ChangeValues>
@@ -44,29 +116,32 @@ const FormDialog = (props) => {
                 id="transDate"
                 label="transDate"
                 defaultValue={props.transDate}
+                onChange={handleChangeValues}
                 type="date"
               />
             </styled.ChangeValues>
 
             <styled.RadioButtons>
-              <styled.Label htmlFor="rIncome">Entrada</styled.Label>
+              <styled.Label htmlFor="income">Entrada</styled.Label>
               <styled.Input
                 type="radio"
-                id="rIncome"
+                id="income"
                 name="group1"
-                checked={props.expense ? false : true}
-                onChange={() => props.setIncome(!props.isExpense)}
+                style={{width:"1rem"}}
+                defaultChecked={props.expense ? false : true}
+                onChange={handleChangeValues} 
               />
             </styled.RadioButtons>
 
             <styled.RadioButtons>
-              <styled.Label htmlFor="rExpenses">Saída</styled.Label>
+              <styled.Label htmlFor="expense">Saída</styled.Label>
               <styled.Input
                 type="radio"
-                id="rExpenses"
+                id="expense"
                 name="group1"
-                checked={props.expense ? true : false}
-                onChange={() => props.setExpense(!props.isExpense)}
+                style={{width:"1rem"}}
+                defaultChecked={props.expense ? true : false}
+                onChange={handleChangeValues}
               />
             </styled.RadioButtons>
           </styled.ModalContent>
@@ -80,12 +155,13 @@ const FormDialog = (props) => {
           <styled.ModalActions>
             <styled.ActionsContainer>
               <styled.AdicionarBtn
-                onClick={() => props.setOpen(false)}
+                onClick={() => onEdit(props.id)}
               >
-                Adicionar
+                Editar
               </styled.AdicionarBtn>
+
               <styled.DeletarBtn
-                onClick={() => props.setOpen(false)}
+                onClick={() => onDelete(props.id)}
               >
                 Deletar
               </styled.DeletarBtn>

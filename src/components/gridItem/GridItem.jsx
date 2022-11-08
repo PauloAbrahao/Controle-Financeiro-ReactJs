@@ -5,11 +5,10 @@ import FormDialog from "../formDialog/FormDialog";
 import {
   FaRegArrowAltCircleUp,
   FaRegArrowAltCircleDown,
-  FaTrash,
   FaEdit,
 } from "react-icons/fa";
 
-const GridItem = ({ item, onDelete }) => {
+const GridItem = ({item}) => {
 
   const [open, setOpen] = React.useState(false);
 
@@ -80,14 +79,9 @@ const GridItem = ({ item, onDelete }) => {
         </styled.Td>
 
         <styled.Td alignCenter>
-          <FaTrash
-            color="red"
-            onClick={() => onDelete(item.id)}
-            style={{ cursor: "pointer" }}
-          />
           <FaEdit
             color="#6F6AF8"
-            style={{ cursor: "pointer", marginLeft: "2rem" }}
+            style={{ cursor: "pointer" }}
             onClick={() => setOpen(true)}
           />
         </styled.Td>

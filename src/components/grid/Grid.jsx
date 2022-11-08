@@ -1,23 +1,8 @@
 import React from "react";
 import GridItem from "../gridItem/GridItem";
 import * as styled from "./styles";
-import { deleteDoc, getDocs, collection } from "firebase/firestore";
-import { db } from "../../config/firebase";
 
 const Grid = ({ itens }) => {
-
-  const onDelete = async (ID) => {
-    const colRef = collection(db, "transactions");
-    const docsSnap = await getDocs(colRef);
-
-    docsSnap.forEach((doc) => {
-      console.log(ID, "=>", doc.data().id);
-      if (doc.data().id === ID) {
-        console.log(doc.ref);
-        deleteDoc(doc.ref);
-      }
-    });
-  };
 
   return (
     <>
@@ -39,7 +24,6 @@ const Grid = ({ itens }) => {
             <GridItem
               key={index}
               item={item}
-              onDelete={onDelete}
             />
           ))}
         </styled.Tbody>

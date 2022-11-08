@@ -8,7 +8,7 @@ export const Background = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  position: absolute;
+  position: fixed;
 `;
 
 export const Centered = styled.div`
@@ -37,7 +37,7 @@ export const Input = styled.input`
 export const Modal = styled.div`
   width: 500px;
   height: 550px;
-  background: #f8fafb;
+  background: #f2f2f2;
   color: white;
   z-index: 10;
   border-radius: 12px;
@@ -61,7 +61,7 @@ export const Heading = styled.h5`
   text-align: center;
 `;
 
-export const ModalContent = styled.h5`
+export const ModalContent = styled.div`
   display: flex;
   flex-direction: column;
   font-size: 14px;
