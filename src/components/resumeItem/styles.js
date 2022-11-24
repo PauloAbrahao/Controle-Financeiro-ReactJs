@@ -10,7 +10,7 @@ export const Container = styled.div`
   width: 30%;
 
   border-radius: 15px;
-  background: #f2f2f2;
+  background: #F8FAFB;
 
   @media (max-width: 750px) {
     width: 20%;

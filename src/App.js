@@ -11,6 +11,8 @@ import Login from "./components/login/Login";
 function App() {
   const [user] = useAuthState(auth);
 
+  if (user) { console.log(user) }
+
   const [transactionsList, setTransactionsList] = React.useState();
   const [income, setIncome] = React.useState(0);
   const [expense, setExpense] = React.useState(0);

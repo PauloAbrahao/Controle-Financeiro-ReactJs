@@ -4,9 +4,10 @@ import firebase from "firebase/compat/app";
 import { auth } from "../../config/firebase.js";
 
 const Login = () => {
-  const signInWithGoogle = () => {
+
+  const signInWithGoogle = async () => {
     const provider = new firebase.auth.GoogleAuthProvider();
-    auth.signInWithPopup(provider);
+    await auth.signInWithPopup(provider);
   };
 
   return (

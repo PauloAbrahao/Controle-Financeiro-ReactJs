@@ -37,7 +37,7 @@ export const Input = styled.input`
 export const Modal = styled.div`
   width: 500px;
   height: 550px;
-  background: #f2f2f2;
+  background: #F8FAFB;
   color: white;
   z-index: 10;
   border-radius: 12px;

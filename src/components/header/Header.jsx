@@ -6,7 +6,7 @@ import {FaSignOutAlt} from "react-icons/fa";
 const Header = () => {
   const handleLogOut = async () => {
     await auth.signOut();
-  };
+  };  
 
   return (
     <Styled.Container>
